@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.vlad.franckformator.StartupActivity">
+
+    <TextView
+        android:id="@+id/textHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Welcome to \nFrankFormator!"
+        android:textAppearance="@android:style/TextAppearance.Widget.TextView.SpinnerItem"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textWelcomeMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textHeader"
+        android:layout_marginTop="11dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:text="FrankFormator let you seamlessly \n manage your day-to-day finance."
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/startupIcon"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/textWelcomeMessage"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/startup_icon" />
+
+    <Button
+        android:id="@+id/btnNextStep"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/startupIcon"
+        android:layout_below="@+id/startupIcon"
+        android:layout_gravity="center"
+        android:layout_marginEnd="43dp"
+        android:layout_marginTop="31dp"
+        android:text="Create accout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+        android:textColor="@color/colorPrimary" />
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.vlad.franckformator.LoginActivity">
+
+    <Button
+        android:id="@+id/btnNextStep"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="183dp"
+        android:text="Go to Pie chart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+        android:textColor="@color/colorPrimary"
+        tools:layout_editor_absoluteX="86dp" />
+
+    <TextView
+        android:id="@+id/textHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="73dp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Header text"
+        android:textAppearance="@android:style/TextAppearance.Widget.TextView.SpinnerItem"
+        android:visibility="visible" />
+</RelativeLayout>
