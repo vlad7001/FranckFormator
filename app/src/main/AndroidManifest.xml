@@ -18,12 +18,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" />
         <activity
-            android:name=".LoginActivity" />
-        <activity
-            android:name=".MainActivity"/>
-        <activity
-            android:name=".SecondActivity" />
+            android:name=".SecondActivity"
+            android:theme="@style/AppThemeNoActionBar" />
 
     </application>
 
