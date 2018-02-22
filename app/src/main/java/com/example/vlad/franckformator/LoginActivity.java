@@ -58,19 +58,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validate(String userName, String userPassword) {
-        if (userName.equals("Vlad") && userPassword.equals("7001")) {
+      //  if (userName.equals("Vlad") && userPassword.equals("7001")) {
             Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
             startActivity(intent);
-        } else {
-            counter--;
-
-            tvInfo.setText("No of attempts remaining: " + String.valueOf(counter));
-
-            if (counter == 0) {
-                btnLogin.setEnabled(false);
-            }
-
-        }
+//        } else {
+//            counter--;
+//
+//            tvInfo.setText("No of attempts remaining: " + String.valueOf(counter));
+//
+//            if (counter == 0) {
+//                btnLogin.setEnabled(false);
+//            }
+//
+//        }
 
     }
 

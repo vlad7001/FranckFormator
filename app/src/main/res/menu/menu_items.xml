@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item
-        android:id="@+id/settings"
-        android:orderInCategory="1"
-        android:title="@string/item_settings"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/about"
-        android:orderInCategory="1"
-        android:title="@string/item_about"
-        app:showAsAction="always"
-        android:onClick="onAbout"/>
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/settings"
+            android:title="@string/item_settings" />
+        <item
+            android:id="@+id/about"
+            android:title="@string/item_about" />
+    </group>
 </menu>
