@@ -1,4 +1,7 @@
 <resources>
+
     <string name="app_name">FranckFormator</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="item_settings">Cost</string>
+    <string name="item_about">Education</string>
+
 </resources>

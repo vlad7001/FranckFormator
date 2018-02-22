@@ -3,6 +3,8 @@ package com.example.vlad.franckformator;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -79,6 +81,4 @@ public class MainActivity extends AppCompatActivity {
         mChart.setRotationEnabled(false);
         mChart.invalidate();
     }
-
-
-}
+    }
