@@ -19,8 +19,8 @@
         android:text="Go to Pie chart"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
         android:textColor="@color/colorPrimary"
-        tools:layout_editor_absoluteX="222dp"
-        tools:layout_editor_absoluteY="440dp" />
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="511dp" />
 
     <Button
         android:id="@+id/button"

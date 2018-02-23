@@ -1,5 +1,6 @@
 package com.example.vlad.franckformator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -32,10 +33,17 @@ public class SecondActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        menuItem.setChecked(true);
-                        // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
+                        switch (menuItem.getItemId()){
+
+                            case R.id.education:
+                                Intent intent = new Intent(SecondActivity.this, Main2Activity.class);
+
+                            startActivity(intent);
+
+                        break;
+
+                        }
 
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
