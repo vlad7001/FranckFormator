@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Main2Activity extends AppCompatActivity {
+public class QuotesActivity extends AppCompatActivity {
 
     private TextView textView;
 
@@ -19,7 +19,7 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        textView = (TextView) findViewById(R.id.listView);
+        textView = findViewById(R.id.listView);
 
         List<String> items = initData();
 

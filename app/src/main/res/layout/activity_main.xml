@@ -48,12 +48,11 @@
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/startupIcon"
         android:layout_below="@+id/startupIcon"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginEnd="43dp"
-        android:layout_marginTop="31dp"
-        android:text="Create accout"
+        android:layout_marginTop="30dp"
+        android:text="Continue"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
         android:textColor="@color/colorPrimary" />
 </RelativeLayout>

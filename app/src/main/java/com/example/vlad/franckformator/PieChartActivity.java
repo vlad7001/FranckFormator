@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 
+import com.example.vlad.franckformator.data.Spending;
+import com.example.vlad.franckformator.storage.DatabaseStorage;
+import com.example.vlad.franckformator.storage.Storage;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -15,38 +18,57 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Create Navigation menu
  * Manage PieChart and Spending Fragment
  */
 
-public class MainActivity extends AppCompatActivity {
+public class PieChartActivity extends AppCompatActivity {
 
+    Storage storage;
 
     protected String[] mActivities = new String[]{
-            "Products", "Leisure", "Lunch", "Clothes", "Sport", "Entertainment"
+            "PRODUCTS", "LEISURE", "LUNCH", "CLOTHES", "SPORT", "FUN"
     };
-
-    protected Float[] mPercents = new Float[]{
-            21.0f, 25f, 25f, 6f, 2f, 17f
-    };
-
-    private PieChart mChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart);
-        ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
 
-        mChart = findViewById(R.id.chart);// NOTE: The order of the entries when being added to the entries array determines their position around the center of
-        // the chart.
-        for (int i = 0; i < 6; i++) {
-            entries.add(new PieEntry(mPercents[i], mActivities[i]));
+        storage = new DatabaseStorage(PieChartActivity.this);
+
+        List<Spending> spendings = storage.fetch();
+        List<PieEntry> entries = getEntries(spendings);
+        initPieChart(entries);
+    }
+
+
+    // Логика формирования данных для PieChart a
+    private List<PieEntry> getEntries(List<Spending> spendings) {
+        List<PieEntry> entries = new ArrayList<PieEntry>();
+        //calculate percents for any of names
+        for (String activityName : mActivities) {
+            float sumOfEntries = 0f;
+            for (Spending spending : spendings) {
+                if (spending.type.toString().equals(activityName)) {
+                    sumOfEntries += spending.amount;
+                }
+            }
+            if (sumOfEntries > 0) {
+                entries.add(new PieEntry(sumOfEntries, activityName));
+            }
+            //create pieEntries
         }
+        return entries;
+    }
 
-        PieDataSet dataSet = new PieDataSet(entries, "SomeLabel");
+    void initPieChart(List<PieEntry> entries) {
+        PieChart mChart = findViewById(R.id.chart);
+        // the chart.
+        PieDataSet dataSet = new PieDataSet(entries, "");
         ArrayList<Integer> colors = new ArrayList<Integer>();
 
         for (int c : ColorTemplate.VORDIPLOM_COLORS)
@@ -68,12 +90,12 @@ public class MainActivity extends AppCompatActivity {
         dataSet.setColors(colors);
 
         PieData data = new PieData(dataSet);
-        data.setValueFormatter(new PercentFormatter());
+//        data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(11f);
         data.setValueTextColor(Color.BLACK);
 
 
-        mChart.setUsePercentValues(true);
+//        mChart.setUs(true);
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
         mChart.setCenterText("FF");
         mChart.setCenterTextSize(32f);
@@ -81,4 +103,4 @@ public class MainActivity extends AppCompatActivity {
         mChart.setRotationEnabled(false);
         mChart.invalidate();
     }
-    }
+}

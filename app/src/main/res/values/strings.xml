@@ -5,5 +5,5 @@
     <string name="item_about">Education</string>
     <string name="balance_how_much_money_have_you_spend">Balance \nHow much money have you spend?</string>
     <string name="please_insert_the_amount_choose_the_category">please insert the amount\n choose the category</string>
-
+    <string name="statistics">Statistic</string>
 </resources>

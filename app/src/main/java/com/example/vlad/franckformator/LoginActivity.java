@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Objects;
-
 public class LoginActivity extends AppCompatActivity {
 
     /*   @Override
@@ -26,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
                    //get data from edit texts here and show it with toast
                    editText.getText().toString
 
-                   Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                   Intent intent = new Intent(LoginActivity.this, PieChartActivity.class);
                    startActivity(intent);
                }
            });*/
@@ -59,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void validate(String userName, String userPassword) {
       //  if (userName.equals("Vlad") && userPassword.equals("7001")) {
-            Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
+            Intent intent = new Intent(LoginActivity.this, SpendingActivity.class);
             startActivity(intent);
 //        } else {
 //            counter--;
