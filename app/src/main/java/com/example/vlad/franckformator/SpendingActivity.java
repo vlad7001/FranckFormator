@@ -76,7 +76,6 @@ public class SpendingActivity extends AppCompatActivity implements View.OnClickL
                         mDrawerLayout.closeDrawers();
                         Intent intent;
                         switch (menuItem.getItemId()) {
-
                             case R.id.education:
                                 intent = new Intent(SpendingActivity.this, QuotesActivity.class);
                                 startActivity(intent);
@@ -84,6 +83,10 @@ public class SpendingActivity extends AppCompatActivity implements View.OnClickL
                             case R.id.statistics:
                                 intent = new Intent(SpendingActivity.this, PieChartActivity.class);
                                 startActivity(intent);
+                                break;
+                            case R.id.clearStatistics:
+                                storage.clear();
+                                Toast.makeText(SpendingActivity.this, "Statistic is successfully deleted", Toast.LENGTH_SHORT).show();
                                 break;
                         }
                         return true;

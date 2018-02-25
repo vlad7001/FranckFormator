@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface Storage {
     void store(Spending data);
+
     List<Spending> fetch();
+
+    void clear();
 }

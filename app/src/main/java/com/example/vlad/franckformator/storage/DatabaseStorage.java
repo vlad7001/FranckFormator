@@ -45,27 +45,18 @@ public class DatabaseStorage implements Storage {
 
     @Override
     public List<Spending> fetch() {
-
-//        List<Spending> myList = new ArrayList<>();
-//
-//        myList.add(new Spending(432235355, SpendingType.PRODUCTS, 2.3));
-//        myList.add(new Spending(432235356, SpendingType.PRODUCTS, 2.5));
-//        myList.add(new Spending(432235357, SpendingType.PRODUCTS, 2.5));
-//        myList.add(new Spending(432235358, SpendingType.PRODUCTS, 1.5));
-//
-//        myList.add(new Spending(432235359, SpendingType.CLOTHES, 2));
-//        myList.add(new Spending(432235350, SpendingType.CLOTHES, 2.5));
-//        myList.add(new Spending(432235351, SpendingType.CLOTHES, 2.5));
-//        myList.add(new Spending(432235352, SpendingType.CLOTHES, 2.5));
-//        myList.add(new Spending(432235352, SpendingType.SPORT, 30.5));
-//        return myList;
-
-//
         String fetchedData = readFromAndroidStorage();
         if (!fetchedData.equals("")) {
             SpendingList list = gson.fromJson(fetchedData, SpendingList.class);
             return list.getSpendingsList();
         } else return new ArrayList<>();
+    }
+
+    @Override
+    public void clear() {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+        editor.apply();
     }
 
 
@@ -79,8 +70,5 @@ public class DatabaseStorage implements Storage {
     private String readFromAndroidStorage() {
         return sharedPref.getString(STORAGE_TABLE_KEY, "");
     }
-    // createDatabase
-    // implement DB methods.
-
 
 }

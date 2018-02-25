@@ -10,4 +10,7 @@
         <item
             android:id="@+id/education"
             android:title="@string/item_about" />
+        <item
+            android:id="@+id/clearStatistics"
+            android:title="@string/clearStatistics" />
 </menu>
