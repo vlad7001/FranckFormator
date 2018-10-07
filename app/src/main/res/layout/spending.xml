@@ -38,6 +38,23 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/tvCurrentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnSave"
+            android:layout_below="@+id/textView7"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
+            android:text="gdsfgsd"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
 
         <EditText
             android:id="@+id/etCost"
@@ -67,12 +84,11 @@
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView7"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:text="Save"
 
-            />
+            android:layout_marginBottom="184dp"
+            android:text="Save" />
 
         <LinearLayout
             android:id="@+id/linearLayout"

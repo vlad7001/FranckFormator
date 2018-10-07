@@ -3,7 +3,6 @@ package com.example.vlad.franckformator.storage;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.vlad.franckformator.R;
 import com.example.vlad.franckformator.data.Spending;
 import com.example.vlad.franckformator.data.SpendingList;
 import com.example.vlad.franckformator.data.SpendingType;
@@ -18,20 +17,16 @@ import java.util.List;
 
 public class DatabaseStorage implements Storage {
 
-
     private static final String STORAGE_KEY = "my_storage";
     private static final String STORAGE_TABLE_KEY = "storage_table_key";
 
-    private Context context;
     private SharedPreferences sharedPref;
     private Gson gson;
 
 
     public DatabaseStorage(Context context) {
-        this.context = context;
         this.sharedPref = context.getSharedPreferences(STORAGE_KEY, Context.MODE_PRIVATE);
         this.gson = new Gson();
-
     }
 
     @Override
@@ -59,6 +54,15 @@ public class DatabaseStorage implements Storage {
         editor.apply();
     }
 
+    @Override
+    public List<Spending> fetch(SpendingType type) {
+        String fetchedData = readFromAndroidStorage();
+        if (!fetchedData.equals("")) {
+            SpendingList list = gson.fromJson(fetchedData, SpendingList.class);
+            return list.getSpendingsList(type);
+        } else return new ArrayList<>();
+    }
+
 
     private void storeToAndroidStorage(String data) {
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -66,9 +70,9 @@ public class DatabaseStorage implements Storage {
         editor.apply();
     }
 
-
     private String readFromAndroidStorage() {
         return sharedPref.getString(STORAGE_TABLE_KEY, "");
     }
+
 
 }

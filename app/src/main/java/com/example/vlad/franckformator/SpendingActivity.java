@@ -1,5 +1,6 @@
 package com.example.vlad.franckformator;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vlad.franckformator.data.Spending;
@@ -23,10 +26,18 @@ import com.example.vlad.franckformator.data.SpendingType;
 import com.example.vlad.franckformator.storage.DatabaseStorage;
 import com.example.vlad.franckformator.storage.Storage;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 public class SpendingActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DrawerLayout mDrawerLayout;
     private SpendingType selectedType;
+    private Long selectedTime;
     Button btnProducts;
     Button btnLeisure;
     Button btnLunch;
@@ -115,6 +126,8 @@ public class SpendingActivity extends AppCompatActivity implements View.OnClickL
 
         final Button buttonSave = findViewById(R.id.btnSave);
         final EditText etCost = findViewById(R.id.etCost);
+        final TextView tvCurrentDate = findViewById(R.id.tvCurrentDate);
+
         buttonSave.setEnabled(false);
         etCost.addTextChangedListener(new TextWatcher() {
             @Override
@@ -144,15 +157,61 @@ public class SpendingActivity extends AppCompatActivity implements View.OnClickL
                     //Если ввод правильный делаем сохранение в сторедж одного Spending который состоит из
                     //текущей даты(System.currentTimeMillis()) далее с помощью метода getSelectedType() достаем выбраный тип Spending, и
                     //третим параметром мы передаем введенное нами  число (количество потраченых денег) и приводим строку кк типу Double
-                    storage.store(new Spending(System.currentTimeMillis(), getSelectedType(), Double.valueOf(input)));
-                    Toast.makeText(SpendingActivity.this, "Data is succesfully saved", Toast.LENGTH_LONG).show();
+
+                    final Calendar c = Calendar.getInstance();
+
+                    if (getSelectedTime() == null) {
+                        selectedTime = c.getTimeInMillis();
+                    }
+                    storage.store(new Spending(getSelectedTime(), getSelectedType(), Double.valueOf(input)));
+                    Toast.makeText(SpendingActivity.this, "Data is successfully saved", Toast.LENGTH_LONG).show();
                     etCost.setText("");
+
+                    tvCurrentDate.setText(getFormattedText(c.getTimeInMillis()));
+
                     hideSoftKeyboard();
                 }
             }
         });
+
+
+        // Use the current time as the default values for the picker
+        final Calendar c = Calendar.getInstance();
+        final int year = c.get(Calendar.YEAR);
+        final int month = c.get(Calendar.MONTH);
+        final int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+
+        // Create a new instance of TimePickerDialog and return it
+
+        final DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                final Calendar c = Calendar.getInstance();
+                c.setTime(new Date(selectedTime));
+                c.set(Calendar.YEAR, year);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                tvCurrentDate.setText(getFormattedText(c.getTimeInMillis()));
+                selectedTime = c.getTimeInMillis();
+            }
+        };
+        tvCurrentDate.setText(getFormattedText(c.getTimeInMillis()));
+        tvCurrentDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(SpendingActivity.this, listener, year, month, dayOfMonth).show();
+            }
+        });
+
     }
 
+    private String getFormattedText(long time) {
+        Date date = new Date(time);
+        DateFormat formatter = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
+        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return formatter.format(date);
+    }
 
     private boolean validateInput(String s) {
         return !s.isEmpty();
@@ -170,6 +229,10 @@ public class SpendingActivity extends AppCompatActivity implements View.OnClickL
 
     public SpendingType getSelectedType() {
         return selectedType;
+    }
+
+    public Long getSelectedTime() {
+        return selectedTime;
     }
 
     @Override
