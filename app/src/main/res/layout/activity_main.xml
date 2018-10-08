@@ -35,24 +35,23 @@
 
     <ImageView
         android:id="@+id/startupIcon"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_below="@+id/textWelcomeMessage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_gravity="center"
-        android:layout_marginTop="12dp"
         android:src="@drawable/startup_icon" />
 
     <Button
         android:id="@+id/btnNextStep"
-        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/startupIcon"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
         android:text="Continue"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="30dp"
+        />
 </RelativeLayout>

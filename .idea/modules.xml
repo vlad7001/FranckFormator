@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FranckFormator.iml" filepath="$PROJECT_DIR$/FranckFormator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FranсkFormator.iml" filepath="$PROJECT_DIR$/FranсkFormator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

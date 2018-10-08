@@ -1,7 +1,7 @@
 package com.example.vlad.franckformator.data;
 
 public class Spending {
-    public long date; //Id also
+    public long date; //28.02.2018 23.46
     public SpendingType type;
     public double amount;
 

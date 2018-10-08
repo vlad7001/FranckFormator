@@ -29,9 +29,6 @@ public class PieChartActivity extends AppCompatActivity {
 
     Storage storage;
 
-    protected String[] mActivities = new String[]{
-            "PRODUCTS", "LEISURE", "LUNCH", "CLOTHES", "SPORT", "FUN"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +43,15 @@ public class PieChartActivity extends AppCompatActivity {
     }
 
 
-    // Логика формирования данных для PieChart a
+
+    protected String[] mActivities = new String[]{       //list of possible SpendingTypes
+            "PRODUCTS", "LEISURE", "LUNCH", "CLOTHES", "SPORT", "FUN"
+    };
+
     private List<PieEntry> getEntries(List<Spending> spendings) {
         List<PieEntry> entries = new ArrayList<PieEntry>();
-        //calculate percents for any of names
         for (String activityName : mActivities) {
-            float sumOfEntries = 0f;
+            float sumOfEntries = 0f;                //sum per one SpendingType
             for (Spending spending : spendings) {
                 if (spending.type.toString().equals(activityName)) {
                     sumOfEntries += spending.amount;
@@ -60,11 +60,14 @@ public class PieChartActivity extends AppCompatActivity {
             if (sumOfEntries > 0) {
                 entries.add(new PieEntry(sumOfEntries, activityName));
             }
-            //create pieEntries
         }
         return entries;
     }
 
+    //List<PieEntry> - список который отображает библиотека PieChart
+    // PieEntry состоит из значения и названия, где значение это сумма всех трат для определенной категории,
+    // а название это название категории трат.
+    // List<Spending> это то что мы получили из Сторедж.
     void initPieChart(List<PieEntry> entries) {
         PieChart mChart = findViewById(R.id.chart);
         // the chart.

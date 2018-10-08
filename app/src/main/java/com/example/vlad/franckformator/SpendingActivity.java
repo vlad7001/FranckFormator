@@ -35,6 +35,25 @@ public class SpendingActivity extends AppCompatActivity implements View.OnClickL
     Button btnSport;
 
 
+    /**
+     * For "menu navigation" we use native android classes DrawerLayout and navigation view
+     * DrawerLayout - it's top level container for all views.
+     * Inside the DrawerLayout, we have a layout for the main content
+     * and another view that contains the contents of the navigation drawer.
+     *
+     * We store all menu items in menu_items.xml file where we declare id's, names and icons.
+     * In xml file where we declare our screen markup we have NavigationView item. We add there the option
+     * app:menu="@menu/menu_items" that means that our "sliding menu" will have menu items declared in menu_items file
+     *
+     * Inside onOptionsItemSelected method we say that we need to open Navigation drawer by clicking "burger menu" button
+     *
+     * In Spending Activity we setUp click listeners for menu items
+     * after  click on this items we start appropriate activity like QuotesActivity, PieChartActivity, etc...
+     * and close Navigation drawer view.
+     *
+     * */
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +79,7 @@ public class SpendingActivity extends AppCompatActivity implements View.OnClickL
         selectedType = SpendingType.PRODUCTS;
         selectBorderedButton();
         //select Products button;
-        final Storage storage = new DatabaseStorage(SpendingActivity.this);
+        final Storage storage = new DatabaseStorage(SpendingActivity.this); //СОздание СТОРЕДЖА
 
         ActionBar actionbar = getSupportActionBar();
         if (actionbar != null) {
@@ -122,6 +141,9 @@ public class SpendingActivity extends AppCompatActivity implements View.OnClickL
                 String input = etCost.getText().toString();
                 boolean isInputCorrect = validateInput(input);
                 if (isInputCorrect) {
+                    //Если ввод правильный делаем сохранение в сторедж одного Spending который состоит из
+                    //текущей даты(System.currentTimeMillis()) далее с помощью метода getSelectedType() достаем выбраный тип Spending, и
+                    //третим параметром мы передаем введенное нами  число (количество потраченых денег) и приводим строку кк типу Double
                     storage.store(new Spending(System.currentTimeMillis(), getSelectedType(), Double.valueOf(input)));
                     Toast.makeText(SpendingActivity.this, "Data is succesfully saved", Toast.LENGTH_LONG).show();
                     etCost.setText("");

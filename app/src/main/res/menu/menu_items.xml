@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
         <item
             android:id="@+id/settings"
+            android:layout_width="match_parent"
+            android:icon="@drawable/costs"
             android:title="@string/item_settings" />
         <item
             android:id="@+id/statistics"
+            android:icon="@drawable/statistics"
             android:title="@string/statistics" />
         <item
             android:id="@+id/education"
+            android:icon="@drawable/edducca"
             android:title="@string/item_about" />
         <item
             android:id="@+id/clearStatistics"
+            android:icon="@drawable/delete"
             android:title="@string/clearStatistics" />
 </menu>
