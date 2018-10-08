@@ -188,7 +188,7 @@ public class SpendingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 final Calendar c = Calendar.getInstance();
-                c.setTime(new Date(selectedTime));
+                if (selectedTime != null) c.setTime(new Date(selectedTime));
                 c.set(Calendar.YEAR, year);
                 c.set(Calendar.MONTH, month);
                 c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
